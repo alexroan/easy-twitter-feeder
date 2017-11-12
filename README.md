@@ -1,5 +1,5 @@
 # twitter-feeder
-PHP twitter web scraper
+Get the twitter feed of any public twitter user.
 
 ## Installation
 
