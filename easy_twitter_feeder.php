@@ -2,7 +2,7 @@
    /*
    Plugin Name: Easy Twitter Feeder
    Plugin URI: https://github.com/alexroan/twitter-feeder
-   Description: Grab the twitter feed of any publicly visible user
+   Description: Get the twitter feed of any public twitter user without the need for twitter api credentials.
    Version: 0.1
    Author: Alex Roan
    Author URI: http://alexroan.co.uk
