@@ -1,5 +1,5 @@
-# twitter-feeder
-Get the twitter feed of any public twitter user.
+# Easy Twitter Feeder
+Wordpress plugin to get the twitter feed of any public twitter user without the need for twitter api credentials.
 
 ## Installation
 
