@@ -57,38 +57,36 @@ foreach($html->find('div[class=tweet]') as $tweet){
 
 	//media
 
-	//reply
-	$retweets = null;
 	$property = 'data-tweet-stat-count';
-	foreach($tweet->find('div[class=ProfileTweet-action--reply]') as $reply_div){
-		foreach($reply_div->find('span[class=ProfileTweet-actionCountForPresentation]') as $action_count){
-			$replies = $action_count->innertext;
+	//counts
+	$replies = 0;
+	$retweets = 0;
+	$favourites = 0;
+	foreach($tweet->find('div[class=ProfileTweet-actionCountList]') as $counts){
+		foreach($counts->find('span[class=ProfileTweet-action--reply]') as $reply_count){
+			foreach($reply_count->find('span[class=ProfileTweet-actionCount]') as $action_count){
+				$replies = (int) $action_count->$property;
+				break;
+			}
 			break;
 		}
-		break;
+		foreach($counts->find('span[class=ProfileTweet-action--retweet]') as $reply_count){
+			foreach($reply_count->find('span[class=ProfileTweet-actionCount]') as $action_count){
+				$retweets = (int) $action_count->$property;
+				break;
+			}
+			break;
+		}
+		foreach($counts->find('span[class=ProfileTweet-action--favorite]') as $reply_count){
+			foreach($reply_count->find('span[class=ProfileTweet-actionCount]') as $action_count){
+				$favourites = (int) $action_count->$property;
+				break;
+			}
+			break;
+		}
 	}
 	$tweet_result->reply = $replies;
-
-	//retweet
-	$retweets = null;
-	foreach($tweet->find('div[class=ProfileTweet-action--retweet]') as $reply_div){
-		foreach($reply_div->find('span[class=ProfileTweet-actionCountForPresentation]') as $action_count){
-			$retweets = $action_count->innertext;
-			break;
-		}
-		break;
-	}
 	$tweet_result->retweet = $retweets;
-
-	//favourite
-	$favourites = null;
-	foreach($tweet->find('div[class=ProfileTweet-action--favorite]') as $reply_div){
-		foreach($reply_div->find('span[class=ProfileTweet-actionCountForPresentation]') as $action_count){
-			$favourites = $action_count->innertext;
-			break;
-		}
-		break;
-	}
 	$tweet_result->favourite = $favourites;
 
 	array_push($tweet_results, $tweet_result);
