@@ -30,13 +30,12 @@ foreach($html->find('div[class=tweet]') as $tweet){
 	$tweet_result->is_retweet = $tweet_is_retweet;
 
 	//tweet text
-	//TODO
 	$tweet_text = "";
 	$tweet_images = [];
 	foreach($tweet->find('div[class=js-tweet-text-container]') as $tweet_content){
-		//echo $tweet_content->innertext;
 		foreach($tweet_content->find('p[class=tweet-text]') as $tweet_content_text){
-			$tweet_text = $tweet_content_text->innertext;
+			$tweet_text = str_replace("<a", " <a", $tweet_content_text->innertext);
+			$tweet_text = strip_tags($tweet_text);
 			break;
 		}
 		break;
@@ -101,4 +100,3 @@ foreach($html->find('div[class=tweet]') as $tweet){
 } 
 
 echo json_encode($tweet_results);
-
