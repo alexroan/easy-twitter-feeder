@@ -56,6 +56,14 @@ foreach($html->find('div[class=tweet]') as $tweet){
 	$tweet_result->time = $time;
 
 	//media
+	$media = [];
+	foreach($tweet->find('div[class=AdaptiveMedia-container]') as $media_container){
+		foreach($media_container->find('img') as $image_tag){
+			array_push($media, $image_tag->src);
+		}
+		break;
+	}
+	$tweet_result->media = $media;
 
 	$property = 'data-tweet-stat-count';
 	//counts
