@@ -44,4 +44,6 @@ foreach($feed as $tweet){
 }
 ```
 
+## Caveats
 
+This plugin depends on twitter front end html, therefore if the front end is updated by twitter this plugin also needs to be updated for it to continue working. When this case arises, create an issue and it will be resolved as quickly as possible.
